@@ -34,7 +34,7 @@ describe HTTParty do
     post = HTTParty.post(
       "#{url}?"\
       "#{title}&"\
-      "due=invalid_date"
+      'due=invalid_date'
     )
     expect(post.code).to eq 422
     expect(post.message).to eq 'Unprocessable Entity'
@@ -70,7 +70,7 @@ describe HTTParty do
     HTTParty.delete("#{url}/#{id}")
   end
 
-  it 'should not allow us to delete the todos collection' do#
+  it 'should not allow us to delete the todos collection' do
     delete = HTTParty.delete(url)
     expect(delete.code).to eq 405
     expect(delete.message).to eq 'Method Not Allowed'
@@ -103,7 +103,7 @@ describe HTTParty do
       "#{title}&"\
       "#{due}"
     )['id']
-    put = HTTParty.patch(
+    put = HTTParty.put(
       "#{url}/#{id}?"\
       "#{new_title}&"\
       "#{new_due}"
